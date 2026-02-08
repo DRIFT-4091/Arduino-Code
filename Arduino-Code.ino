@@ -1,5 +1,6 @@
-```cpp
-      /*  TETRIX TeleOp Module example code for a genuine SONY PS4 gaming controller.
+
+/*  
+TETRIX TeleOp Module example code for a genuine SONY PS4 gaming controller.
       Date: 09/25/2018
       Author: PWU
       This example demonstrates how to read the SONY PS4 gaming controller's Digital buttons, Analog             Trigger buttons and Joysticks using the TETRIX TeleOP module connected to TETRIX PRIZM robotics             controller.
@@ -86,7 +87,7 @@
  *  
  *  ps4.setDeadZone(stick, amount);   set the amount of Joystick axis dead zone  (stick = LEFT or RIGHT; amount = 0 to 100)
  *  
- */
+*/
 
 #include <PRIZM.h>    // TETRIX PRIZM Library
 #include <TELEOP.h>   // TETRIX TeleOp module Library
@@ -110,5 +111,4 @@ void loop() {
   prizm.setMotorPower(1, ps4.Motor(RY));
 
 }
-``` 
 
