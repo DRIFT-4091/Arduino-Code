@@ -1,60 +1,78 @@
 # Arduino-Code
-Code to explore teleop &amp; autonomous control of the Arduino drivetrain. 
+TETRIX PRIZM robotics controller code for teleop & autonomous control of the drivetrain.
 
-Please, reference **"Arduino Community Events"**, section in Projects, for list of to-dos and deadlines.
+**Note:** For specific to-dos and deadlines, please reference the **"Arduino Community Events"** project in the Projects section.
 
 ## Features
 
-### Motor Control
-- Independent left and right motor control
-- Speed and direction control (PWM)
-- Emergency stop functionality
+This repository contains two main Arduino sketches for the TETRIX PRIZM controller:
 
-### Autonomous Mode
-- `moveForward(speed)` - Move forward at specified speed
-- `moveBackward(speed)` - Move backward at specified speed
-- `turnLeft(speed)` - Turn left in place
-- `turnRight(speed)` - Turn right in place
+### Autonomous.ino
+- Pre-programmed autonomous movement sequences
+- Motor control using PRIZM library
+- Timed movement patterns:
+  - Forward movement (3 seconds)
+  - Backward movement (3 seconds)
+  - Right turn (3 seconds)
+  - Left turn (3 seconds)
 
-### Teleop Mode
-- Serial input control (w/s/a/d keys)
-- Mode switching (autonomous/teleop)
+### TeleopControl.ino
+- PS4 controller integration via TETRIX TeleOp module
+- Real-time joystick control
+- Left joystick (LY) controls motor 2
+- Right joystick (RY) controls motor 1
+- Tank-style drive control
 
 ## Hardware Setup
 
-Default pin configuration (can be modified in Arduino-Code.ino):
-- Left Motor Pin 1: Digital Pin 2
-- Left Motor Pin 2: Digital Pin 3
-- Left Motor Enable (PWM): Pin 5
-- Right Motor Pin 1: Digital Pin 4
-- Right Motor Pin 2: Digital Pin 7
-- Right Motor Enable (PWM): Pin 6
+### Required Components
+- TETRIX PRIZM Robotics Controller
+- TETRIX motors (configured as Motor 1 and Motor 2)
+- For TeleopControl: TETRIX TeleOp module with Bluetooth dongle
+- For TeleopControl: Sony PS4 gaming controller (fully charged)
+
+### Motor Configuration
+- Motor 1: Right side motor (controlled by right joystick Y-axis in teleop)
+- Motor 2: Left side motor (controlled by left joystick Y-axis in teleop)
+- Both motors set to inverted mode for intuitive forward movement
 
 ## Getting Started
 
-1. Open **Arduino-Code.ino** in Arduino IDE
-2. Verify the pin assignments match your hardware
-3. Upload to your Arduino board
-4. Open Serial Monitor (9600 baud)
-5. Use keyboard commands to control:
-   - 'w' - Move forward
-   - 's' - Move backward
-   - 'a' - Turn left
-   - 'd' - Turn right
-   - 'x' - Stop
-   - 'm' - Toggle mode (Autonomous/Teleop)
+### For Autonomous Mode
+1. Open **Autonomous.ino** in Arduino IDE
+2. Ensure PRIZM and TELEOP libraries are installed
+3. Upload to your TETRIX PRIZM controller
+4. Press the green start button on the PRIZM controller
+5. The robot will execute the pre-programmed movement sequence
+
+### For TeleopControl Mode
+1. Open **TeleopControl.ino** in Arduino IDE
+2. Ensure PRIZM and TELEOP libraries are installed
+3. Upload to your TETRIX PRIZM controller
+4. Pair your PS4 controller with the TeleOp module:
+   - Insert Bluetooth dongle into TeleOp module
+   - Power up the TeleOp module (green LED should blink)
+   - Press and hold SHARE + POWER on PS4 controller until LED blinks rapidly
+   - Press MODE button on TeleOp module to pair
+   - Wait for solid green LED on both devices
+5. Press the green start button on the PRIZM controller
+6. Control the robot using the PS4 joysticks
 
 ## Customization
 
-### Modify Pin Assignments
-Edit the pin constants at the top of **Arduino-Code.ino**
+### Modify Autonomous Movement Patterns
+Edit the motor powers and delay times in the `setup()` function of **Autonomous.ino** to create custom movement sequences.
 
-### Add Custom Autonomous Behaviors
-Edit the `autonomousControl()` function in **Arduino-Code.ino**
+### Adjust Motor Inversion
+Change the `prizm.setMotorInvert()` parameters in either file if your motors rotate in the wrong direction.
 
-### Add Custom Teleop Controls
-Edit the `teleopControl()` function in **Arduino-Code.ino**
+### Customize TeleopControl Mapping
+Modify the joystick-to-motor mapping in the `loop()` function of **TeleopControl.ino** to change control behavior.
 
-## Ready to Edit
+## Library Requirements
 
-The Arduino-Code.ino file is fully functional and ready for customization. Simply modify the TODO sections or add your own logic!
+Both sketches require the following Arduino libraries:
+- **PRIZM.h** - TETRIX PRIZM Controller Library
+- **TELEOP.h** - TETRIX TeleOp Module Library
+
+These libraries must be installed in your Arduino IDE before uploading the code.
