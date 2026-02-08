@@ -98,17 +98,15 @@ PS4 ps4;              // Create an instance within the PS4 Library class named p
 void setup() {
 
  prizm.PrizmBegin();        // Intializes the PRIZM controller and waits here for press of green start button
- prizm.setMotorInvert(1,1);
- prizm.setMotorPowers(1,20, 2, 40);
- system.
+ prizm.setMotorInvert(1,1); // invert the motors so when you push the joystick down, the robot goes forward. 
 }
 
 void loop() {
 
   ps4.getPS4();         // Get (read) all PS4 button and joystick data values
   
-  prizm.setMotorPower(2,ps4.Motor(LY));
-  prizm.setMotorPower(1, ps4.Motor(RY));
+  prizm.setMotorPower(2,ps4.Motor(LY)); // left y is the second motor
+  prizm.setMotorPower(1, ps4.Motor(RY)); // right y is the first motor
 
 }
 
