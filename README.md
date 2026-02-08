@@ -1,11 +1,7 @@
 # Arduino-Code
-Code to explore teleop &amp; autonomous control of the Arduino drivetrain
+Code to explore teleop &amp; autonomous control of the Arduino drivetrain. 
 
-## Project Structure
-
-- **Drivetrain.h** - Header file with class definition and method declarations
-- **Drivetrain.cpp** - Implementation file with all drivetrain control logic
-- **Arduino-Code.ino** - Main Arduino sketch file (setup and loop functions)
+Please, reference **"Arduino Community Events"**, section in Projects, for list of to-dos and deadlines.
 
 ## Features
 
@@ -22,12 +18,11 @@ Code to explore teleop &amp; autonomous control of the Arduino drivetrain
 
 ### Teleop Mode
 - Serial input control (w/s/a/d keys)
-- `teleopControl(forward, turn)` - Arcade-style control
 - Mode switching (autonomous/teleop)
 
 ## Hardware Setup
 
-Default pin configuration (can be modified in Drivetrain.cpp constructor):
+Default pin configuration (can be modified in Arduino-Code.ino):
 - Left Motor Pin 1: Digital Pin 2
 - Left Motor Pin 2: Digital Pin 3
 - Left Motor Enable (PWM): Pin 5
@@ -52,14 +47,7 @@ Default pin configuration (can be modified in Drivetrain.cpp constructor):
 ## Customization
 
 ### Modify Pin Assignments
-Edit the constructor in **Drivetrain.cpp**:
-```cpp
-Drivetrain::Drivetrain() {
-    leftMotorPin1 = 2;    // Change these values
-    leftMotorPin2 = 3;
-    // ... etc
-}
-```
+Edit the pin constants at the top of **Arduino-Code.ino**
 
 ### Add Custom Autonomous Behaviors
 Edit the `autonomousControl()` function in **Arduino-Code.ino**
@@ -69,4 +57,4 @@ Edit the `teleopControl()` function in **Arduino-Code.ino**
 
 ## Ready to Edit
 
-All files are fully functional and ready for customization. Simply modify the TODO sections or add your own logic!
+The Arduino-Code.ino file is fully functional and ready for customization. Simply modify the TODO sections or add your own logic!
